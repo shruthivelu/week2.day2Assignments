@@ -1,6 +1,7 @@
 package week2.day2Assignments;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -35,10 +36,16 @@ public class Assignment4_LeafGroundDropdown {
 		DD2.selectByValue("3");
 		System.out.println(DD2);
 		
-		System.out.println(driver.findElement(By.className("dropdown")).getSize());			
 		
-		WebElement ele4 = driver.findElement(By.xpath("(//option[text()='You can also use sendKeys to select'])"));
-		ele4.sendKeys("Selenium");
+		WebElement ele4 = driver.findElement(By.className("dropdown"));
+		Select DD3 = new Select(ele4);
+		List<WebElement> options = DD3.getOptions();
+		int size = options.size();
+		System.out.println("Total Options are:"+ size);
+		
+		
+		WebElement ele5 = driver.findElement(By.xpath("//*[@id='contentblock']/section/div[5]/select"));
+		ele5.sendKeys("Selenium");
 		
 		Thread.sleep(1000);
 		driver.findElement(By.xpath("(//option[text()='Appium'])[6]")).click();
